@@ -10,8 +10,8 @@ import (
 )
 
 type ValidRuleRequest struct {
-	ID uint `form:"id" json:"id" binding:"required,min=10,max=1000"`
-	Name uint `form:"name" json:"name" binding:"required,max=3"`
+	ID   uint `form:"id" json:"id" binding:"required,min=10,max=1000"`
+	Name string `form:"name" json:"name" binding:"required,max=3"`
 }
 
 // TestValidator controller
@@ -26,12 +26,12 @@ func (t TestValidator) ValidRule(ctx *gin.Context) {
 
 	if err != nil {
 		message := validation4gin.Message{
-			"ID.*":    ":ID错误",
-			"ID.type": ":ID类型错误",
-			"ID.min":  ":ID不得小于10",
-			"ID.max":  ":ID不得大于100",
-			"Name.required":  ":Name不得为空",
-			"*":  ":Name格式有误",
+			"ID.*":          ":ID错误",
+			"ID.type":       ":ID类型错误",
+			"ID.min":        ":ID不得小于10",
+			"ID.max":        ":ID不得大于100",
+			"Name.required": ":Name不得为空",
+			"*":             ":Name格式有误",
 		}
 		attribute := validation4gin.FieldMap{
 			"ID":   "编号",
@@ -39,7 +39,6 @@ func (t TestValidator) ValidRule(ctx *gin.Context) {
 		}
 		msg := validation4gin.Translate(err, message, attribute)
 		fmt.Println(msg.First())
-
 
 		if errors, ok := err.(validator.ValidationErrors); ok {
 			for _, item := range errors {
