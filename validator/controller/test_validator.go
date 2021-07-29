@@ -10,7 +10,7 @@ import (
 )
 
 type ValidRuleRequest struct {
-	ID   uint `form:"id" json:"id" binding:"required,min=10,max=1000"`
+	ID   uint   `form:"id" json:"id" binding:"required,min=10,max=1000"`
 	Name string `form:"name" json:"name" binding:"required,max=3"`
 }
 
