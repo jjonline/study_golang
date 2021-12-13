@@ -1,5 +1,7 @@
 package gen
 
+//go:generate echo "first"
+
 const (
 	CodeErr      Code = iota + 1 // 错误
 	CodeMsg                      // 提示
