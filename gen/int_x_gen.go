@@ -11,25 +11,36 @@ func _() {
 	_ = x[CodeErr-1]
 	_ = x[CodeMsg-2]
 	_ = x[CodePwdError-3]
+	_ = x[CodeAccError-4]
+	_ = x[CodeValidError-5]
+	_ = x[CodeToRedirect-6]
 	_ = x[CodeSuccess-500]
+	_ = x[CodeForbidden-600]
+	_ = x[CodeNotAllow-700]
 }
 
 const (
-	_Code_name_0 = "错误提示密码错误"
+	_Code_name_0 = "错误提示密码错误账户错误参数错误跳转至"
 	_Code_name_1 = "登录成功"
+	_Code_name_2 = "禁止操作"
+	_Code_name_3 = "无操作权限"
 )
 
 var (
-	_Code_index_0 = [...]uint8{0, 6, 12, 24}
+	_Code_index_0 = [...]uint8{0, 6, 12, 24, 36, 48, 57}
 )
 
 func (i Code) String() string {
 	switch {
-	case 1 <= i && i <= 3:
+	case 1 <= i && i <= 6:
 		i -= 1
 		return _Code_name_0[_Code_index_0[i]:_Code_index_0[i+1]]
 	case i == 500:
 		return _Code_name_1
+	case i == 600:
+		return _Code_name_2
+	case i == 700:
+		return _Code_name_3
 	default:
 		return "Code(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
