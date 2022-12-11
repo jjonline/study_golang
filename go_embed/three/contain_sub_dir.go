@@ -19,3 +19,9 @@ var T3 embed.FS
 
 //go:embed a.txt b.txt
 var T4 embed.FS
+
+//go:embed stub/*
+var T5 embed.FS
+
+//go:embed stubs/*
+var T6 embed.FS
